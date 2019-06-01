@@ -4,6 +4,7 @@ import store from './redux/index'
 //import logo from './logo.svg';
 import './App.css';
 import Header from './Header/Header';
+import Footer from './Footer/Footer';
 import List from './List/List';
 
 export default () => (
@@ -11,6 +12,7 @@ export default () => (
     <div className="App">
       <Header></Header>
       <List></List>
+      <Footer></Footer>
     </div>
   </Provider>
 );

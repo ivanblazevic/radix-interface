@@ -9,8 +9,6 @@ export default class ItemsService {
             headers: new Headers({
                 'x-apikey': '5ae89d7625a622ae4d528762'
             })
-        }).then(res => {
-            return res.json();
-        })
+        }).then(res => res.json()).catch(e => e);
     }
 }

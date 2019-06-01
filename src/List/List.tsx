@@ -6,6 +6,7 @@ import { actionFetchItems } from "../redux/item/actions";
 import { connect } from "react-redux";
 import { ItemsState } from "../redux/item/reducers";
 import { Item } from "../models/item";
+import PlayerService from "../services/player";
 
 class List extends React.Component<any, ItemsState> {
 
@@ -21,6 +22,7 @@ class List extends React.Component<any, ItemsState> {
     }
 
     onClick(item: Item) {
+        PlayerService.play(item);
         console.log("click", item)
     }
 
