@@ -1,29 +1,16 @@
-//import NoteModel from '../models/Note';
-//import Poems from './data/notes';
+import { Item } from "../models/item";
 
-const ENABLE_RANDOM_ERRORS = false;
+const FAVORITES_HOST = "https://radix-83cd.restdb.io/rest/stations";
 
 export default class ItemsService {
-    static getAll(): Promise<any[]> {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                if (ENABLE_RANDOM_ERRORS && Math.random() > 0.5) {
-                    reject(new Error('Error'));
-                } else {
-                    resolve([
-                        {
-                            id: 1,
-                            name: "bla",
-                            url: "nlej"
-                        },
-                        {
-                            id: 2,
-                            name: "bla 2",
-                            url: "nlejaA"
-                        }
-                    ]);
-                }
-            }, 0);
-        });
+    static getAll(): Promise<Item[]> {
+        return fetch(FAVORITES_HOST, {
+            method: 'GET',
+            headers: new Headers({
+                'x-apikey': '5ae89d7625a622ae4d528762'
+            })
+        }).then(res => {
+            return res.json();
+        })
     }
 }
