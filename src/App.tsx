@@ -1,26 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Provider } from 'react-redux'
+import store from './redux/index'
+//import logo from './logo.svg';
 import './App.css';
+import Header from './Header/Header';
+import List from './List/List';
 
-const App: React.FC = () => {
-  return (
+export default () => (
+  <Provider store={store}>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header></Header>
+      <List></List>
     </div>
-  );
-}
-
-export default App;
+  </Provider>
+);

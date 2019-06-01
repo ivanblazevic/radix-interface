@@ -1,0 +1,42 @@
+/*@typescript-eslint/no-useless-constructor: "off"*/
+
+import React from "react";
+import ListItem from './ListItem';
+import { AppState } from "../redux";
+import { actionFetchItems } from "../redux/item/actions";
+import { connect } from "react-redux";
+import { ItemsState } from "../redux/item/reducers";
+
+class List extends React.Component<any, ItemsState> {
+
+    // eslint-disable-next-line @typescript-eslint/no-useless-constructor
+    constructor(props: any, state: ItemsState) {
+        super(props, state);
+    }
+
+    componentDidMount() {
+        //if (this.props.state === 'INIT') {
+          this.props.loadData();
+        //}
+      }
+
+    render() {
+        return (
+            <ul>
+                {this.props.items.map((todo: any, i: number) => (
+                    <ListItem item={todo} key={i} />
+                ))}
+            </ul>
+        );
+    }
+}
+
+const mapStateToProps = (state: AppState) => state.items;
+  
+const mapDispatchToProps = (dispatch: any) => { // tslint:disable-line
+    return {
+      loadData: () => dispatch(actionFetchItems())
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(List);
