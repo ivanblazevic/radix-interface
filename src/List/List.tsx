@@ -5,8 +5,7 @@ import { actionFetchItems } from "../redux/item/actions";
 import { connect } from "react-redux";
 import { ItemsState } from "../redux/item/reducers";
 import { Item } from "../models/item";
-import PlayerService from "../services/player";
-import { actionFetchPlayerInfo } from "../redux/player/actions";
+import { actionPlay } from "../redux/player/actions";
 
 class List extends React.Component<any, ItemsState> {
 
@@ -22,11 +21,7 @@ class List extends React.Component<any, ItemsState> {
     }
 
     onClick = (item: Item) => {
-        PlayerService.play(item).then(r => {
-            this.props.loadInfo();
-        }).catch(e => {
-            console.error(e);
-        })
+        this.props.play(item);
     }
 
     isPlaying(url: string): boolean {
@@ -35,6 +30,7 @@ class List extends React.Component<any, ItemsState> {
 
     render() {
         return (
+            // {  }
             <ul>
                 {this.props.itemsState.items.map((item: Item, i: number) => (
                     <ListItem item={item} key={i} index={i} selected={this.isPlaying(item.url)} onClick={this.onClick} />
@@ -54,7 +50,7 @@ const mapStateToProps = (state: AppState) => {
 const mapDispatchToProps = (dispatch: any) => {
     return {
       loadData: () => dispatch(actionFetchItems()),
-      loadInfo: () => dispatch(actionFetchPlayerInfo())
+      play: (item: Item) => dispatch(actionPlay(item))
     };
 }
 
