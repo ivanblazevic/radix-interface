@@ -17,10 +17,10 @@ function dispatchFetchPlayerInfoSuccess(info: PlayerInfo): any {
   };
 }
 
-function dispatchFetchPlayerInfoError(e: Error): any {
+function dispatchFetchPlayerInfoError(errorMessage: string): any {
   return {
     type: ACTION_PLAYER_INFO_ERROR,
-    errorMessage: e.message
+    errorMessage
   };
 }
 
@@ -31,8 +31,8 @@ export function actionFetchPlayerInfo() {
     .then((res) => {
       return dispatch(dispatchFetchPlayerInfoSuccess(res));
     })
-    .catch((e: Error) => {
-      return dispatch(dispatchFetchPlayerInfoError(e));
+    .catch((e: string) => {
+      return dispatch(dispatchFetchPlayerInfoError(e.toString()));
     });
   };
 }
@@ -44,8 +44,8 @@ export function actionPlay(item: Item) {
     .then(_ => {
       return dispatch(actionFetchPlayerInfo());
     })
-    .catch((e: Error) => {
-      return dispatch(dispatchFetchPlayerInfoError(e));
+    .catch((e: string) => {
+      return dispatch(dispatchFetchPlayerInfoError(e.toString()));
     });
   };
 }

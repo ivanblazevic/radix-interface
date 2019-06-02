@@ -33,7 +33,7 @@ export function playerReducer(
       return { ...state, info: action.info, state: LoadingState.LOADED }
     }
     case ACTION_PLAYER_INFO_ERROR: {
-      return { ...state, errorMessage: action }
+      return { ...state, errorMessage: action.errorMessage, state: LoadingState.ERROR }
     }
     default:
       return state

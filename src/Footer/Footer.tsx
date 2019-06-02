@@ -27,7 +27,7 @@ class Footer extends React.Component<any, PlayerState> {
                         case LoadingState.LOADED:
                             return <span><i className="fas fa-music"></i>{this.props.info.title}</span>;
                         case LoadingState.ERROR:
-                            return <span><i className="fas fa-unlink"></i>Radix is offline</span>;
+                            return <span><i className="fas fa-unlink"></i>{this.props.errorMessage}</span>;
                         default:
                             return null;
                         }
