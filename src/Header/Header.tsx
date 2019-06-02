@@ -4,11 +4,10 @@ export default class Header extends React.Component {
     render() {
         return (
             <header>
-                <div>
-                    <i className="fas fa-bars"></i>
+                <div className="container">
                     <span>STATIONS</span>
+                    <i className="fas fa-search"></i>
                 </div>
-                <i className="fas fa-search"></i>
             </header>
         );
     }

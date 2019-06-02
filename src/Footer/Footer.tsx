@@ -37,7 +37,7 @@ export default class Footer extends React.Component<{}, FooterState> {
                 {(() => {
                     switch(this.state && this.state.state) {
                         case LoadingState.LOADING:
-                            return <span>Getting Info</span>;
+                            return <span><i className="fas fa-spinner"></i>Getting Info</span>;
                         case LoadingState.LOADED:
                             return <span><i className="fas fa-music"></i>{this.state.title}</span>;
                         case LoadingState.ERROR:
