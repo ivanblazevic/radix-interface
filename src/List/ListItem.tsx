@@ -5,11 +5,12 @@ interface ListItemProps {
     item: Item;
     onClick: any; // TODO: add function def
     index: number;
+    selected: boolean;
 }
 
 const ListItem = (props: ListItemProps) => (
     <li onClick={() => props.onClick(props.item)}>    
-        { props.index === 5 ? <span><i className="fas fa-play"></i> </span> : <span>{ props.index + 1 }. </span> }
+        { props.selected ? <span><i className="fas fa-play"></i> </span> : <span>{ props.index + 1 }. </span> }
         { props.item.title }
     </li>
 )

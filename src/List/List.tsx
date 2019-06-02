@@ -1,4 +1,3 @@
-/*@typescript-eslint/no-useless-constructor: "off"*/
 import React from "react";
 import ListItem from './ListItem';
 import { AppState } from "../redux";
@@ -7,6 +6,7 @@ import { connect } from "react-redux";
 import { ItemsState } from "../redux/item/reducers";
 import { Item } from "../models/item";
 import PlayerService from "../services/player";
+import { actionFetchPlayerInfo } from "../redux/player/actions";
 
 class List extends React.Component<any, ItemsState> {
 
@@ -21,27 +21,40 @@ class List extends React.Component<any, ItemsState> {
         //}
     }
 
-    onClick(item: Item) {
-        PlayerService.play(item);
-        console.log("click", item)
+    onClick = (item: Item) => {
+        PlayerService.play(item).then(r => {
+            this.props.loadInfo();
+        }).catch(e => {
+            console.error(e);
+        })
+    }
+
+    isPlaying(url: string): boolean {
+        return this.props.currentPlayingUrl === url;
     }
 
     render() {
         return (
             <ul>
-                {this.props.items.map((todo: any, i: number) => (
-                    <ListItem item={todo} key={i} index={i} onClick={this.onClick} />
+                {this.props.itemsState.items.map((item: Item, i: number) => (
+                    <ListItem item={item} key={i} index={i} selected={this.isPlaying(item.url)} onClick={this.onClick} />
                 ))}
             </ul>
         );
     }
 }
 
-const mapStateToProps = (state: AppState) => state.items;
+const mapStateToProps = (state: AppState) => {
+    return {
+        itemsState: state.items,
+        currentPlayingUrl: state.player.info.url
+    }
+};
   
 const mapDispatchToProps = (dispatch: any) => {
     return {
-      loadData: () => dispatch(actionFetchItems())
+      loadData: () => dispatch(actionFetchItems()),
+      loadInfo: () => dispatch(actionFetchPlayerInfo())
     };
 }
 
