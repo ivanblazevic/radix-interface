@@ -4,7 +4,7 @@ export default class Header extends React.Component {
     render() {
         return (
             <header>
-                this is header
+                <span>STATIONS</span>
             </header>
         );
     }

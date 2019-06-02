@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+
 }
 
 .App-logo {
@@ -33,21 +33,27 @@
 }
 
 header {
-  position: fixed;
-  left: 0;
-  right: 0;
   top: 0;
-  height: 80px;
-  background: gray;
+  font-size: 30px;
+  font-weight: bold;
 }
 
 footer {
+  bottom: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+footer i {
+  margin-right: 6px;
+}
+
+header, footer {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 0;
-  height: 80px;
-  background: gray;
+  padding: 16px;
+  background: #341931;
 }
 
 ul {
@@ -59,4 +65,10 @@ ul {
 ul {
   margin-top: 80px;
   margin-bottom: 80px;
+}
+
+li {
+  padding: 12px;
+  border-bottom: 1px solid #571B3C;
+  margin: 8px;
 }
