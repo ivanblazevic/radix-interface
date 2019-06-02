@@ -155,3 +155,30 @@ li {
 .fa-spinner {
   animation: App-logo-spin infinite 2s linear;
 }
+
+
+.search-hidden input {
+  display: none;
+}
+
+.search-hidden span {
+  display: inline-block;
+}
+
+
+.search-visible input {
+  display: inline-block;
+}
+
+.search-visible span {
+  display: none;
+}
+
+input {
+  border: 1px solid #9d2053;
+  background: rgba(0,0,0,0.4);
+  padding: 4px;
+  font-size: 25px;
+  margin: -4px 0;
+  color: var(--textColor);
+}

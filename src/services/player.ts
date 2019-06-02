@@ -9,7 +9,7 @@ const HOST = process.env.REACT_APP_RADIX_HOST;
 
 export default class PlayerService {
     static play(item: Item): Promise<any> {
-        const url = HOST + "/playa?url=" + item.url + "&title=" + item.title;
+        const url = HOST + "/play?url=" + item.url + "&title=" + item.title;
         return fetch(url).then(function(response) {
             if (!response.ok) {
                 throw Error(response.statusText);
