@@ -30,7 +30,7 @@ class List extends React.Component<any, ItemsState> {
         return (
             <ul>
                 {this.props.items.map((todo: any, i: number) => (
-                    <ListItem item={todo} key={i} onClick={this.onClick} />
+                    <ListItem item={todo} key={i} index={i} onClick={this.onClick} />
                 ))}
             </ul>
         );

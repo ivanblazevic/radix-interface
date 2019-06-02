@@ -28,8 +28,8 @@ export function actionFetchItems() {
   return (dispatch: Dispatch) => {
     //dispatch(dispatchFetchNotesProgress());
     return ItemsService.getAll()
-    .then((notes) => {
-      return dispatch(dispatchFetchNotesSuccess(notes));
+    .then((res) => {
+      return dispatch(dispatchFetchNotesSuccess(res));
     })
     .catch((e: Error) => {
       return dispatch(dispatchFetchNotesError(e));

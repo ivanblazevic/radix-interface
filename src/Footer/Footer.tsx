@@ -1,45 +1,31 @@
 import React from "react";
-import PlayerService from "../services/player";
+import { LoadingState, AppState } from "../redux";
+import { connect } from "react-redux";
+import { PlayerState } from "../redux/player/reducers";
+import { actionFetchPlayerInfo } from "../redux/player/actions";
 
-export interface PlayerInfo {
-    title: string;
-    url: string;
-    version: string;
-    volume: number;
-}
+class Footer extends React.Component<any, PlayerState> {
 
-export enum LoadingState {
-    LOADING,
-    LOADED,
-    ERROR
-}
-
-type FooterState = {
-    state: LoadingState;
-    title: string
-}
-
-export default class Footer extends React.Component<{}, FooterState> {
+    // eslint-disable-next-line @typescript-eslint/no-useless-constructor
+    constructor(props: any, state: PlayerState) {
+        super(props, state);
+    }
 
     componentDidMount() {
-        this.setState({ state: LoadingState.LOADING })
-        PlayerService.info().then((r: PlayerInfo) => {
-            this.setState({ title: r.title })
-            this.setState({ state: LoadingState.LOADED })
-        }).catch(e => {
-            this.setState({ state: LoadingState.ERROR })
-        })
+        if (this.props.state === LoadingState.INIT) {
+            this.props.loadData();
+        }
     }
 
     render() {
         return (
             <footer>
                 {(() => {
-                    switch(this.state && this.state.state) {
+                    switch(this.props.state) {
                         case LoadingState.LOADING:
                             return <span><i className="fas fa-spinner"></i>Getting Info</span>;
                         case LoadingState.LOADED:
-                            return <span><i className="fas fa-music"></i>{this.state.title}</span>;
+                            return <span><i className="fas fa-music"></i>{this.props.info.title}</span>;
                         case LoadingState.ERROR:
                             return <span><i className="fas fa-unlink"></i>Radix is offline</span>;
                         default:
@@ -50,3 +36,13 @@ export default class Footer extends React.Component<{}, FooterState> {
         );
     }
 }
+
+const mapStateToProps = (state: AppState) => state.player;
+
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+      loadData: () => dispatch(actionFetchPlayerInfo())
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Footer);

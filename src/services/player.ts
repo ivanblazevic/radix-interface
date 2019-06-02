@@ -3,7 +3,7 @@
  */
 
 import { Item } from "../models/item";
-import { PlayerInfo } from "../Footer/Footer";
+import { PlayerInfo } from "../models/playerInfo";
 
 const HOST = process.env.REACT_APP_RADIX_HOST;
 
