@@ -29,17 +29,32 @@ class List extends React.Component<any, ItemsState> {
     }
 
     render() {
-        switch (this.props.itemsState.state) {
-            case LoadingState.LOADING:
-                return <div id="items-loading"><i className="fas fa-spinner"></i></div>
-            case LoadingState.LOADED:
-                return <ul>
-                    {this.props.itemsState.items.map((item: Item, i: number) => (
-                        <ListItem item={item} key={i} index={i} selected={this.isPlaying(item.url)} onClick={this.onClick} />
-                    ))}
-                </ul>
-            default:
-                return null;
+        if (this.props.searchState.searchActivated) {
+            switch (this.props.searchState.state) {
+                case LoadingState.LOADING:
+                    return <div id="items-loading"><i className="fas fa-spinner"></i></div>
+                case LoadingState.LOADED:
+                    return <ul>
+                        {this.props.itemsState.items.map((item: Item, i: number) => (
+                            <ListItem item={item} key={i} index={i} selected={this.isPlaying(item.url)} onClick={this.onClick} />
+                        ))}
+                    </ul>
+                default:
+                    return null;
+            }
+        } else {
+            switch (this.props.itemsState.state) {
+                case LoadingState.LOADING:
+                    return <div id="items-loading"><i className="fas fa-spinner"></i></div>
+                case LoadingState.LOADED:
+                    return <ul>
+                        {this.props.itemsState.items.map((item: Item, i: number) => (
+                            <ListItem item={item} key={i} index={i} selected={this.isPlaying(item.url)} onClick={this.onClick} />
+                        ))}
+                    </ul>
+                default:
+                    return null;
+            }
         }
     }
 
@@ -49,7 +64,7 @@ const mapStateToProps = (state: AppState) => {
     return {
         itemsState: state.items,
         currentPlayingUrl: state.player.info.url,
-        //searchState: state.search
+        searchState: state.search
     }
 };
 

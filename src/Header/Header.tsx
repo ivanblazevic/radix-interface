@@ -1,13 +1,14 @@
 import React from "react";
-import { Store } from "redux";
+import { AppState } from "../redux";
+import { actionSearch, actionActivateSearch } from "../redux/search/actions";
+import { connect } from "react-redux";
+import { SearchState } from "../redux/search/reducers";
 
-export default class Header extends React.Component<any> {
+class Header extends React.Component<any, any>  {
 
-    private store: Store;
-
-    constructor(props: any){
-        super(props);
-        this.store = this.props.store;
+    // eslint-disable-next-line @typescript-eslint/no-useless-constructor
+    constructor(props: any, state: SearchState) {
+        super(props, state);
     }
 
     state = {
@@ -15,12 +16,12 @@ export default class Header extends React.Component<any> {
     }
     
     activateSearch = () => {
-        console.log(this.store);
-       // store.dispatch({type:"UPDATE_VARIABLE", payload: true })
+        this.setState({ isSearching: !this.state.isSearching });
+        this.props.activateSearch(!this.state.isSearching);
     }
 
-    onSearch(event: any) {
-        console.log(event.target.value)
+    onSearch = (event: any) => {
+        this.props.search(event.target.value);
     }
 
     render() {
@@ -37,3 +38,18 @@ export default class Header extends React.Component<any> {
         );
     }
 }
+
+const mapStateToProps = (state: AppState) => {
+    return {
+        searchState: state.search
+    }
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        search: (query: string) => dispatch(actionSearch(query)),
+        activateSearch: (isActivated: boolean) => dispatch(actionActivateSearch(isActivated))
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -27,7 +27,6 @@ export function actionFetchItems() {
     dispatch(dispatchFetchItems());
     return ItemsService.getAll()
     .then((res) => {
-      console.log("bla")
       return dispatch(dispatchFetchItemsSuccess(res));
     })
     .catch((e: Error) => {
