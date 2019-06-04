@@ -31,4 +31,17 @@ export default class PlayerService {
             throw Error("Offline or wrong address");
         });
     }
+
+    static searchStations(query: string): Promise<Item[]> {
+        const url = HOST + "/search?query=" + query;
+        return fetch(url).then(function(response) {
+            if (!response.ok) {
+                throw Error(response.statusText);
+            }
+            return response.json();
+        }).catch(e => {
+            throw Error("Offline or wrong address");
+        });
+    }
+
 }

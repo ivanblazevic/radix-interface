@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
-import ItemsService from "../../services/items";
 import { ACTION_SEARCH_ITEMS_FETCH_SUCCESS, ACTION_SEARCH_ITEMS_FETCH_ERROR, ACTION_SEARCH_ITEMS_FETCH, ACTION_ACTIVATE_SEARCH } from "./types";
+import PlayerService from "../../services/player";
 
 function dispatchSearch(): any {
   return {
@@ -38,7 +38,7 @@ export function actionActivateSearch(isActive: boolean) {
 export function actionSearch(query: string) {
   return (dispatch: Dispatch) => {
     dispatch(dispatchSearch());
-    return ItemsService.getAll()
+    return PlayerService.searchStations(query)
     .then((res) => {
       return dispatch(dispatchFetchSuccess(res));
     })
