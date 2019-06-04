@@ -1,13 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+:root {
+  --textColor: #f43b47;
+  --textDefaultColor: rgba(0, 0, 0, 0.8);
+  --listDivider: rgba(0, 0, 0, 0.3);
+  --headerTextColor: #9D2053;
+  --headerBackground: rgba(52, 25, 49, 0.7);
+  --backgroundGradient: linear-gradient(to top, #f43b47 0%, #453a94 100%);
+}
+
 body {
   margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  /*
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+    */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
 
-  background: #111625;
-  color: #9D2053;
+html {
+  color: var(--textDefaultColor);
+  background-image: var(--backgroundGradient);
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 code {
@@ -20,6 +42,6 @@ code {
 }
 
 ::placeholder {
-  color: #9D2053;
+  color: var(--textColor);
   opacity: 0.4;
 }

@@ -1,10 +1,10 @@
 import React from "react";
 import ListItem from './ListItem';
 import { AppState, LoadingState } from "../redux";
-import { actionFetchItems } from "../redux/item/actions";
 import { connect } from "react-redux";
-import { ItemsState } from "../redux/item/reducers";
 import { Item } from "../models/item";
+import { actionFetchItems } from "../redux/item/actions";
+import { ItemsState } from "../redux/item/reducers";
 import { actionPlay } from "../redux/player/actions";
 
 class List extends React.Component<any, ItemsState> {
@@ -22,6 +22,7 @@ class List extends React.Component<any, ItemsState> {
 
     onClick = (item: Item) => {
         this.props.play(item);
+        //ItemsService.add({ title: "SURF AND ROCK.FM", url: "http://70.38.73.27:8049/live" })
     }
 
     isPlaying(url: string): boolean {

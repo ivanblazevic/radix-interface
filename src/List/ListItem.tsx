@@ -10,8 +10,14 @@ interface ListItemProps {
 
 const ListItem = (props: ListItemProps) => (
     <li onClick={() => props.onClick(props.item)}>    
-        { props.selected ? <span><i className="fas fa-play"></i> </span> : <span>{ props.index + 1 }. </span> }
+        <span className={props.selected ? 'hidden' : ''}>{ props.index + 1 }. </span>
         { props.item.title }
+        <div id="bars" className={props.selected ? 'selected' : ''}>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+        </div>
     </li>
 )
 
