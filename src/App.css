@@ -182,3 +182,13 @@ input {
   margin: -4px 0;
   color: var(--textColor);
 }
+
+#items-loading {
+  width: 100px;
+  height: 100px;
+  margin-left: -50px;
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  font-size: 50px;
+}

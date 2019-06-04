@@ -1,13 +1,22 @@
 import React from "react";
+import { Store } from "redux";
 
-export default class Header extends React.Component {
+export default class Header extends React.Component<any> {
+
+    private store: Store;
+
+    constructor(props: any){
+        super(props);
+        this.store = this.props.store;
+    }
 
     state = {
         isSearching: false
     }
     
     activateSearch = () => {
-        this.setState({ isSearching: !this.state.isSearching });
+        console.log(this.store);
+       // store.dispatch({type:"UPDATE_VARIABLE", payload: true })
     }
 
     onSearch(event: any) {

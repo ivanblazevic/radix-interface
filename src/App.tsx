@@ -13,7 +13,7 @@ export default () => (
     <div className="App">
       <SideBar/>
       <div>
-        <Header></Header>
+        <Header store={store}></Header>
         <List></List>
         <Footer></Footer>
       </div>

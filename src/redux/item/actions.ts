@@ -1,23 +1,21 @@
 import { Dispatch } from "redux";
 import ItemsService from "../../services/items";
-import { ACTION_ITEMS_FETCH_SUCCESS, ACTION_ITEMS_FETCH_ERROR } from "./types";
+import { ACTION_ITEMS_FETCH_SUCCESS, ACTION_ITEMS_FETCH_ERROR, ACTION_ITEMS_FETCH } from "./types";
 
-/*
-function dispatchFetchITEMSProgress(): any {
+function dispatchFetchItems(): any {
   return {
-    type: ACTION_NOTES_FETCH
+    type: ACTION_ITEMS_FETCH
   };
 }
-*/
 
-function dispatchFetchNotesSuccess(items: any[]): any {
+function dispatchFetchItemsSuccess(items: any[]): any {
   return {
     type: ACTION_ITEMS_FETCH_SUCCESS,
     items
   };
 }
 
-function dispatchFetchNotesError(e: Error): any {
+function dispatchFetchItemsError(e: Error): any {
   return {
     type: ACTION_ITEMS_FETCH_ERROR,
     errorMessage: e.message
@@ -26,13 +24,14 @@ function dispatchFetchNotesError(e: Error): any {
 
 export function actionFetchItems() {
   return (dispatch: Dispatch) => {
-    //dispatch(dispatchFetchNotesProgress());
+    dispatch(dispatchFetchItems());
     return ItemsService.getAll()
     .then((res) => {
-      return dispatch(dispatchFetchNotesSuccess(res));
+      console.log("bla")
+      return dispatch(dispatchFetchItemsSuccess(res));
     })
     .catch((e: Error) => {
-      return dispatch(dispatchFetchNotesError(e));
+      return dispatch(dispatchFetchItemsError(e));
     });
   };
 }
