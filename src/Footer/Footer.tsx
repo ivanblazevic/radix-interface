@@ -1,8 +1,8 @@
 import React from "react";
-import { LoadingState, AppState } from "../redux";
 import { connect } from "react-redux";
-import { PlayerState } from "../redux/player/reducers";
+import { AppState, LoadingState } from "../redux";
 import { actionFetchPlayerInfo } from "../redux/player/actions";
+import { PlayerState } from "../redux/player/reducers";
 
 class Footer extends React.Component<any, PlayerState> {
 
@@ -20,6 +20,7 @@ class Footer extends React.Component<any, PlayerState> {
     render() {
         return (
             <footer>
+                <div className="header-background"></div>
                 {(() => {
                     switch(this.props.state) {
                         case LoadingState.LOADING:

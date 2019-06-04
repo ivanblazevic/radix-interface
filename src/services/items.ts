@@ -11,4 +11,15 @@ export default class ItemsService {
             })
         }).then(res => res.json()).catch(e => e);
     }
+
+    static add(item: any): Promise<Item[]> {
+        return fetch(FAVORITES_HOST, {
+            method: 'POST',
+            body: JSON.stringify(item),
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'x-apikey': '5ae89d7625a622ae4d528762'
+            })
+        }).then(res => res.json()).catch(e => e);
+    }
 }

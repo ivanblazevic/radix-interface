@@ -17,6 +17,7 @@ export default class Header extends React.Component {
     render() {
         return (
             <header>
+                <div className="header-background"></div>
                 <div className="container">
                     <div className={ this.state.isSearching ? "search-visible" : "search-hidden" }>
                         <span>STATIONS</span>
