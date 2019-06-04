@@ -21,6 +21,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+label {
+  color: var(--textColor);
+  margin-right: 12px;
+  font-size: 25px;
+}
+
 html {
   color: var(--textDefaultColor);
   background-image: var(--backgroundGradient);

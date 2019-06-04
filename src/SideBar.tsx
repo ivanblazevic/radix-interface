@@ -1,10 +1,10 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
 
-export default () => {
+export default (props: any) => {
   return (
     // Pass on our props
-    <Menu>
+    <Menu isOpen={props.isOpen} onStateChange={(state) => props.handleStateChange(state)}>
       <a className="menu-item" href="/">
         Stations
       </a>
@@ -13,7 +13,10 @@ export default () => {
         YouTube
       </a>
 
-      <a className="menu-item" href="/">
+      <a className="menu-item" onClick={_ => {
+        props.showSettings();
+        props.handleStateChange({ isOpen: false });
+      }}>
         Settings
       </a>
     </Menu>

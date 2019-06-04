@@ -36,7 +36,7 @@ class List extends React.Component<any, ItemsState> {
                     return <div id="items-loading"><i className="fas fa-spinner"></i></div>
                 case LoadingState.LOADED:
                     return <ul>
-                        {this.props.itemsState.items.map((item: Item, i: number) => (
+                        {this.props.searchState.items.map((item: Item, i: number) => (
                             <ListItem item={item} key={i} index={i} selected={this.isPlaying(item.url)} onClick={this.onClick} />
                         ))}
                     </ul>
