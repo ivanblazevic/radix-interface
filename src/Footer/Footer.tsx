@@ -1,20 +1,33 @@
 import React from "react";
 import { connect } from "react-redux";
 import { AppState, LoadingState } from "../redux";
-import { actionFetchPlayerInfo } from "../redux/player/actions";
+import { actionFetchPlayerInfo, actionPlay, actionAddToFavorites } from "../redux/player/actions";
 import { PlayerState } from "../redux/player/reducers";
+import Menu from './Menu';
+import { Item } from "../models/item";
 
 class Footer extends React.Component<any, PlayerState> {
 
     // eslint-disable-next-line @typescript-eslint/no-useless-constructor
     constructor(props: any, state: PlayerState) {
         super(props, state);
+
+        this.play = this.play.bind(this);
+        this.addToFavorites = this.addToFavorites.bind(this);
     }
 
     componentDidMount() {
         if (this.props.state === LoadingState.INIT) {
             this.props.loadData();
         }
+    }
+
+    play(item: Item) {
+        this.props.play(item);
+    }
+
+    addToFavorites() {
+        this.props.addToFavorites();
     }
 
     render() {
@@ -33,6 +46,7 @@ class Footer extends React.Component<any, PlayerState> {
                             return null;
                         }
                 })()}
+                <Menu play={this.play} addToFavorites={this.addToFavorites}></Menu>
             </footer>
         );
     }
@@ -42,7 +56,9 @@ const mapStateToProps = (state: AppState) => state.player;
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-      loadData: () => dispatch(actionFetchPlayerInfo())
+      loadData: () => dispatch(actionFetchPlayerInfo()),
+      play: (item: Item) => dispatch(actionPlay(item)),
+      addToFavorites: () => dispatch(actionAddToFavorites())
     };
 }
 

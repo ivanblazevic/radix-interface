@@ -3,6 +3,8 @@ import { ACTION_PLAYER_INFO_SUCCESS, ACTION_PLAYER_INFO_ERROR, ACTION_PLAYER_INF
 import PlayerService from "../../services/player";
 import { PlayerInfo } from "../../models/playerInfo";
 import { Item } from "../../models/item";
+import store from '../index';
+import ItemsService from "../../services/items";
 
 function dispatchFetchPlayerInfo(): any {
   return {
@@ -46,6 +48,27 @@ export function actionPlay(item: Item) {
     })
     .catch((e: string) => {
       return dispatch(dispatchFetchPlayerInfoError(e.toString()));
+    });
+  };
+}
+
+export function actionAddToFavorites() {
+  return (dispatch: any) => {
+    const state = store.getState();
+
+    const item: Item = {
+      title: state.player.info.title,
+      url: state.player.info.url
+    }
+
+    return ItemsService.add(item).then(res => {
+      console.log(res);
+      //return dispatch(actionFetchPlayerInfo());
+      return null;
+    })
+    .catch((e: string) => {
+      return null;
+      //return dispatch(dispatchFetchPlayerInfoError(e.toString()));
     });
   };
 }

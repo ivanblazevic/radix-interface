@@ -8,12 +8,9 @@ import Footer from './Footer/Footer';
 import List from './List/List';
 import SideBar from './SideBar';
 import Settings from './Settings';
+import Modal from 'react-modal';
 
-/*
-export default () => (
-
-);
-*/
+Modal.setAppElement('#root');
 
 class App extends Component {
 
@@ -34,7 +31,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="App">
+        <div id="app" className="App">
           <SideBar isOpen={this.state.openSidebar} handleStateChange={this.handleStateChange} showSettings={this.show} />
           <div>
             <Header store={store}></Header>

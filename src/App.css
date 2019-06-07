@@ -252,3 +252,38 @@ input {
   right: 20px;
   color: var(--textColor);
 }
+
+.right {
+  float: right;
+}
+
+
+.menu {
+  position: fixed;
+  bottom: 50px;
+  right: 10px;
+  background: rgba(0,0,0,0.7);
+  padding: 20px;
+}
+
+.menu a {
+  text-decoration: none;
+  display: block;
+  color: var(--textColor);
+}
+
+.menu a + a {
+  margin-top: 12px;
+}
+
+button {
+  padding: 8px 30px;
+  font-size: 18px;
+  border: 1px solid #f43a47;
+  color: #f43a47;
+  background: #9d2053;
+}
+
+.full-width {
+  width: 100%;
+}

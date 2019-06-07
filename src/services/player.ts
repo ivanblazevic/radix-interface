@@ -17,7 +17,7 @@ export default class PlayerService {
             }
             return response.json();
         }).catch(e => {
-            throw Error("Offline or wrong address");
+            throw Error(e);
         });
     }
 

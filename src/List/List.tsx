@@ -22,7 +22,6 @@ class List extends React.Component<any, ItemsState> {
 
     onClick = (item: Item) => {
         this.props.play(item);
-        //ItemsService.add({ title: "SURF AND ROCK.FM", url: "http://70.38.73.27:8049/live" })
     }
 
     isPlaying(url: string): boolean {
