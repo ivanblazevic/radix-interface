@@ -31,6 +31,20 @@ class Settings extends React.Component<any, any>  {
 
         return (
             <div id="settings" className={showHideClassName}>
+
+                <div>
+                    Radix v{this.props.info.version}
+                </div>
+                <div>
+                    Volume: {this.props.info.volume}
+                </div>
+                <div>
+                    Playing: {this.props.info.title}
+                    <div><i>{this.props.info.url}</i></div>
+                </div>
+
+                <br/>
+
                 <label htmlFor="ip">IP Address:</label>
                 <input id="ip" placeholder="http://radix.local" type="text" value={this.state.ip} onChange={this.onIPChange}/>
 
@@ -46,7 +60,8 @@ class Settings extends React.Component<any, any>  {
 
 const mapStateToProps = (state: AppState) => {
     return {
-        searchState: state.search
+        searchState: state.search,
+        info: state.player.info
     }
 };
 

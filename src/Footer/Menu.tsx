@@ -26,6 +26,8 @@ class Menu extends React.Component<any>  {
         url: ""
     }
 
+    node: any = {};
+
     // eslint-disable-next-line @typescript-eslint/no-useless-constructor
     constructor(props: any) {
         super(props);
@@ -35,6 +37,14 @@ class Menu extends React.Component<any>  {
         this.closeModal = this.closeModal.bind(this);
 
         this.play = this.play.bind(this);
+    }
+
+    componentWillMount() {
+        document.addEventListener('mousedown', this.handleClick, false);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleClick, false);
     }
 
     openModal() {
@@ -71,12 +81,19 @@ class Menu extends React.Component<any>  {
         this.setState({ modalIsOpen: false });
     }
 
+    handleClick = (e:any) => {
+        if (this.node.contains(e.target)) {
+            return;
+        }
+        this.setState({ menuIsOpen: false });
+    }
+
     render() {
         return (
             <div className="right">
                 <i onClick={this.openMenu} className="fas fa-ellipsis-v"></i>
 
-                <div className={this.state.menuIsOpen ? "menu display-block" : "menu display-none"}>
+                <div ref={node => this.node = node} className={this.state.menuIsOpen ? "menu display-block" : "menu display-none"}>
                     <a onClick={this.openModal}>Play From Url</a>
                     <a onClick={this.addToFavorites}>Add To Favorites</a>
                     <Modal
