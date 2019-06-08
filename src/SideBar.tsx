@@ -5,20 +5,20 @@ export default (props: any) => {
   return (
     // Pass on our props
     <Menu isOpen={props.isOpen} onStateChange={(state) => props.handleStateChange(state)}>
-      <a className="menu-item" href="/">
+      <div className="menu-item">
         Stations
-      </a>
+      </div>
 
-      <a className="menu-item" href="/">
+      <div className="menu-item">
         YouTube
-      </a>
+      </div>
 
-      <a className="menu-item" onClick={_ => {
+      <div className="menu-item" onClick={_ => {
         props.showSettings();
         props.handleStateChange({ isOpen: false });
       }}>
         Settings
-      </a>
+      </div>
     </Menu>
   );
 };

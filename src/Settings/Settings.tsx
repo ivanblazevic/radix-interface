@@ -65,7 +65,7 @@ class Settings extends React.Component<any, any>  {
                     <button onClick={this.update}>Update</button>
                 </div>
 
-                <a id="close" onClick={this.props.handleClose}>close</a>
+                <div id="close" onClick={this.props.handleClose}>close</div>
             </div>
         );
     }

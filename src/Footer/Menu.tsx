@@ -94,8 +94,8 @@ class Menu extends React.Component<any>  {
                 <i onClick={this.openMenu} className="fas fa-ellipsis-v"></i>
 
                 <div ref={node => this.node = node} className={this.state.menuIsOpen ? "menu display-block" : "menu display-none"}>
-                    <a onClick={this.openModal}>Play From Url</a>
-                    <a onClick={this.addToFavorites}>Add To Favorites</a>
+                    <div onClick={this.openModal}>Play From Url</div>
+                    <div onClick={this.addToFavorites}>Add To Favorites</div>
                     <Modal
                         isOpen={this.state.modalIsOpen}
                         onRequestClose={this.closeModal}
