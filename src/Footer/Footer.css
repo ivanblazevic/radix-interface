@@ -5,3 +5,11 @@ footer {
     font-weight: bold;
     padding: 16px;
 }
+
+footer span {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 92%;
+    display: inline-block;
+}
