@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { SearchState } from "./redux/search/reducers";
 import { AppState } from "./redux";
 import { actionSearch, actionActivateSearch } from "./redux/search/actions";
+import PlayerService from "./services/player";
 
 class Settings extends React.Component<any, any>  {
     // eslint-disable-next-line @typescript-eslint/no-useless-constructor
@@ -24,6 +25,10 @@ class Settings extends React.Component<any, any>  {
 
     ipHasChanged() {
         return this.state.oldIp !== this.state.ip;
+    }
+
+    update() {
+        PlayerService.update();
     }
 
     render() {
@@ -51,6 +56,13 @@ class Settings extends React.Component<any, any>  {
                 { this.ipHasChanged() && 
                     <span>Restart for changes to take effect</span>
                 }
+
+                <br/>
+                <br/>
+                
+                <div>
+                    <button onClick={this.update}>Update</button>
+                </div>
 
                 <a id="close" onClick={this.props.handleClose}>close</a>
             </div>

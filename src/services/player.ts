@@ -45,4 +45,16 @@ export default class PlayerService {
         });
     }
 
+    static update(): Promise<PlayerInfo> {
+        const url = this.HOST + "/update";
+        return fetch(url).then(function(response) {
+            if (!response.ok) {
+                throw Error(response.statusText);
+            }
+            return response.json();
+        }).catch(e => {
+            throw Error("Offline or wrong address");
+        });
+    }
+
 }
