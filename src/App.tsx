@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux'
 import store from './redux/index'
-//import logo from './logo.svg';
 import './App.css';
+import './BurgerMenu.css';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import List from './List/List';
@@ -31,7 +31,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div id="app" className="App">
+        <div className="App">
           <SideBar isOpen={this.state.openSidebar} handleStateChange={this.handleStateChange} showSettings={this.show} />
           <div>
             <Header store={store}></Header>

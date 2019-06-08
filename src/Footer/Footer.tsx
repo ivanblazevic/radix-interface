@@ -5,6 +5,7 @@ import { actionFetchPlayerInfo, actionPlay, actionAddToFavorites } from "../redu
 import { PlayerState } from "../redux/player/reducers";
 import Menu from './Menu';
 import { Item } from "../models/item";
+import './Footer.css';
 
 class Footer extends React.Component<any, PlayerState> {
 
@@ -33,7 +34,9 @@ class Footer extends React.Component<any, PlayerState> {
     render() {
         return (
             <footer>
-                <div className="header-background"></div>
+                <div className="header-background-container">
+                    <div className="header-background"></div>
+                </div>
                 {(() => {
                     switch(this.props.state) {
                         case LoadingState.LOADING:

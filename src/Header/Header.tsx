@@ -3,6 +3,7 @@ import { AppState } from "../redux";
 import { actionSearch, actionActivateSearch } from "../redux/search/actions";
 import { connect } from "react-redux";
 import { SearchState } from "../redux/search/reducers";
+import './Header.css';
 
 class Header extends React.Component<any, any>  {
 
@@ -27,7 +28,9 @@ class Header extends React.Component<any, any>  {
     render() {
         return (
             <header>
-                <div className="header-background"></div>
+                <div className="header-background-container">
+                    <div className="header-background"></div>
+                </div>
                 <div className="container">
                     <div className={ this.state.isSearching ? "search-visible" : "search-hidden" }>
                         <span>STATIONS</span>

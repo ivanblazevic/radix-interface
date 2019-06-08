@@ -7,20 +7,6 @@
   }
 }
 
-header {
-  color: var(--headerTextColor);
-  top: 0;
-  font-size: 30px;
-  font-weight: bold;
-}
-
-footer {
-  color: var(--textColor);
-  bottom: 0;
-  font-size: 20px;
-  font-weight: bold;
-}
-
 header .fa-bars,
 footer i {
   margin-right: 10px;
@@ -30,36 +16,12 @@ header, footer {
   position: fixed;
   left: 0;
   right: 0;
-  overflow: hidden;
-}
-
-footer {
-  padding: 16px;
-}
-
-header .container {
-  display: flex;
-  justify-content: space-between;
-  padding: 16px 16px 16px 66px;
-}
-
-.header-background {
-  margin: -40px;
-  filter: blur(8px);
-  background: var(--headerBackground);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
 }
 
 ul {
   padding: 0;
   margin: 0;
   list-style: none;
-
   margin-top: 66px;
   margin-bottom: 54px;
   position: absolute;
@@ -77,72 +39,9 @@ li {
   position: relative;
 }
 
-.bm-item {
-  display: inline-block;
-  text-decoration: none;
-  margin-bottom: 10px;
-  color: var(--textColor);
-  transition: color 0.2s;
-}
-
-.bm-item:hover {
-  color: white;
-}
-
-.bm-burger-button {
-  position: fixed;
-  width: 36px;
-  height: 30px;
-  left: 20px;
-  top: 20px;
-}
-
-.bm-burger-bars {
-  background: var(--headerTextColor);
-}
-
-.bm-cross-button {
-  height: 24px;
-  width: 24px;
-}
-
-.bm-cross {
-  background: #bdc3c7;
-}
-
-.bm-menu {
-  background: var(--headerBackground);
-  padding: 2.5em 1.5em 0;
-  font-size: 1.15em;
-}
-
-.bm-morph-shape {
-  fill: #373a47;
-}
-
-.bm-item-list {
-  color: #b8b7ad;
-  display: flex;
-  flex-direction: column;
-}
-
-.bm-overlay {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.bm-overlay,
-.bm-menu-wrap {
-  top: 0;
-}
-
-.bm-item:last-child {
-  margin-top: auto;
-}
-
 .fa-spinner {
   animation: App-logo-spin infinite 2s linear;
 }
-
 
 .search-hidden input {
   display: none;
@@ -151,7 +50,6 @@ li {
 .search-hidden span {
   display: inline-block;
 }
-
 
 .search-visible input {
   display: inline-block;
@@ -178,10 +76,6 @@ input {
   position: absolute;
   font-size: 50px;
   color: var(--textColor);
-}
-
-.hidden {
-  opacity: 0;
 }
 
 #bars {
@@ -253,11 +147,6 @@ input {
   color: var(--textColor);
 }
 
-.right {
-  float: right;
-}
-
-
 .menu {
   position: fixed;
   bottom: 50px;
@@ -285,6 +174,15 @@ button {
   background: #9d2053;
 }
 
+/* CSS Utils */
 .full-width {
   width: 100%;
+}
+
+.right {
+  float: right;
+}
+
+.hidden {
+  opacity: 0;
 }

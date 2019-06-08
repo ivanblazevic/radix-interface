@@ -1,0 +1,34 @@
+header {
+    color: var(--headerTextColor);
+    top: 0;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 16px 16px 66px;
+}
+  
+.header-background {
+    margin: -40px;
+    filter: blur(8px);
+    background: var(--headerBackground);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.header-background-container {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}

@@ -16,7 +16,7 @@ const customStyles = {
     overlay : {
         background            : 'rgba(0,0,0,0.0)'
     }
-  };
+};
 
 class Menu extends React.Component<any>  {
     state = {
