@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux'
 import store from './redux/index'
 import './App.css';
+import './Utils.css';
 import './BurgerMenu.css';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import List from './List/List';
 import SideBar from './SideBar';
-import Settings from './Settings';
+import Settings from './Settings/Settings';
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root');

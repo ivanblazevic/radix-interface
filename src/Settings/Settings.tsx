@@ -1,9 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { SearchState } from "./redux/search/reducers";
-import { AppState } from "./redux";
-import { actionSearch, actionActivateSearch } from "./redux/search/actions";
-import PlayerService from "./services/player";
+import { SearchState } from "../redux/search/reducers";
+import { AppState } from "../redux";
+import { actionSearch, actionActivateSearch } from "../redux/search/actions";
+import PlayerService from "../services/player";
+import './Settings.css';
 
 class Settings extends React.Component<any, any>  {
     // eslint-disable-next-line @typescript-eslint/no-useless-constructor

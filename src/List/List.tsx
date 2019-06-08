@@ -6,6 +6,8 @@ import { Item } from "../models/item";
 import { actionFetchItems } from "../redux/item/actions";
 import { ItemsState } from "../redux/item/reducers";
 import { actionPlay } from "../redux/player/actions";
+import './List.css';
+import './Bars.css';
 
 class List extends React.Component<any, ItemsState> {
 

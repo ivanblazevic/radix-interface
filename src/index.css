@@ -38,6 +38,23 @@ html {
   bottom: 0;
 }
 
+input {
+  border: 1px solid var(--headerTextColor);
+  background: rgba(0,0,0,0.4);
+  padding: 4px;
+  font-size: 25px;
+  margin: -4px 0;
+  color: var(--textColor);
+}
+
+button {
+  padding: 8px 30px;
+  font-size: 18px;
+  border: 1px solid #f43a47;
+  color: #f43a47;
+  background: var(--headerTextColor);
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

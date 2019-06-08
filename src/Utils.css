@@ -1,0 +1,21 @@
+/* CSS Utils */
+.full-width {
+    width: 100%;
+  }
+  
+  .right {
+    float: right;
+  }
+  
+  .hidden {
+    opacity: 0;
+  }
+  
+  .display-block {
+    display: block;
+  }
+  
+  .display-none {
+    display: none;
+  }
+  
