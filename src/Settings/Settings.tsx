@@ -4,7 +4,7 @@ import { SearchState } from "../redux/search/reducers";
 import { AppState } from "../redux";
 import { actionSearch, actionActivateSearch } from "../redux/search/actions";
 import PlayerService from "../services/player";
-import './Settings.css';
+import styles from './settings.module.css';
 
 class Settings extends React.Component<any, any>  {
     // eslint-disable-next-line @typescript-eslint/no-useless-constructor
@@ -36,7 +36,7 @@ class Settings extends React.Component<any, any>  {
         const showHideClassName = this.props.show ? "modal display-block" : "modal display-none";
 
         return (
-            <div id="settings" className={showHideClassName}>
+            <div className={styles.settings + " " + showHideClassName}>
 
                 <div>
                     Radix v{this.props.info.version}
@@ -65,7 +65,7 @@ class Settings extends React.Component<any, any>  {
                     <button onClick={this.update}>Update</button>
                 </div>
 
-                <div id="close" onClick={this.props.handleClose}>close</div>
+                <div className={styles.close} onClick={this.props.handleClose}>close</div>
             </div>
         );
     }

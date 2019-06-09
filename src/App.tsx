@@ -6,7 +6,7 @@ import './Utils.css';
 import './BurgerMenu.css';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
-import List from './List/List';
+import ListContainer from './components/List/ListContainer';
 import SideBar from './SideBar';
 import Settings from './Settings/Settings';
 import Modal from 'react-modal';
@@ -36,7 +36,7 @@ class App extends Component {
           <SideBar isOpen={this.state.openSidebar} handleStateChange={this.handleStateChange} showSettings={this.show} />
           <div>
             <Header store={store}></Header>
-            <List></List>
+            <ListContainer></ListContainer>
             <Footer></Footer>
           </div>
         </div>

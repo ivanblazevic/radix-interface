@@ -1,5 +1,5 @@
 import React from 'react';
-import { Item } from '../models/item';
+import { Item } from '../../models/item';
 
 interface ListItemProps {
     item: Item;
