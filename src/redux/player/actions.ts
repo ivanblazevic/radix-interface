@@ -72,20 +72,3 @@ export function actionAddToFavorites() {
     });
   };
 }
-
-export function actionRemoveFromFavorites() {
-  return (dispatch: any) => {
-    const state = store.getState();
-
-    return ItemsService.removeFavorites(state.player.info._id).then(res => {
-      console.log(res);
-      //return dispatch(actionFetchPlayerInfo());
-      return null;
-    })
-    .catch((e: string) => {
-      return null;
-      //return dispatch(dispatchFetchPlayerInfoError(e.toString()));
-    });
-  };
-}
-

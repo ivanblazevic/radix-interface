@@ -12,7 +12,7 @@ export default class ItemsService {
         }).then(res => res.json()).catch(e => e);
     }
 
-    static add(item: any): Promise<Item[]> {
+    static add(item: Item): Promise<Item[]> {
         return fetch(FAVORITES_HOST, {
             method: 'POST',
             body: JSON.stringify(item),
@@ -23,7 +23,7 @@ export default class ItemsService {
         }).then(res => res.json()).catch(e => e);
     }
 
-    static removeFavorites(id: string): Promise<Item[]> {
+    static removeFavorites(id: string | undefined): Promise<Item[]> {
         return fetch(FAVORITES_HOST + "/" + id, {
             method: 'DELETE',
             headers: new Headers({

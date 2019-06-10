@@ -1,4 +1,4 @@
-import { ACTION_ITEMS_FETCH_SUCCESS, ACTION_ITEMS_FETCH_ERROR, ACTION_ITEMS_FETCH } from './types'
+import { ACTION_ITEMS_FETCH_SUCCESS, ACTION_ITEMS_FETCH_ERROR, ACTION_ITEMS_FETCH, ACTION_ITEMS_DELETE_SUCCESS } from './types'
 import { Item } from '../../models/item';
 
 export enum LoadingState {
@@ -33,6 +33,11 @@ export function itemReducer(
     }
     case ACTION_ITEMS_FETCH_ERROR: {
       return { ...state, errorMessage: action, state: LoadingState.ERROR }
+    }
+    case ACTION_ITEMS_DELETE_SUCCESS: {
+      const items = state.items;
+      items.splice( state.items.indexOf(action.item), 1 );
+      return { ...state, items: items }
     }
     default:
       return state

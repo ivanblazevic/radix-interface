@@ -27,9 +27,6 @@ const BottomModal = (props: BottomModalProps) => {
                     <li onClick={props.addToFavorites}>
                         <span><i className="fas fa-star"></i></span> Add To Favorites
                     </li>
-                    <li onClick={props.removeFromFavorites}>
-                        <span><i className="fas fa-trash-alt"></i></span> Remove To Favorites
-                    </li>
                 </ul>
             </Modal>
             <PlayFromUrlModal isOpen={isPlayOpen} closeMenu={() => setIsPlayOpen(false)} />

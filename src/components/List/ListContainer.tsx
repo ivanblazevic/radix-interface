@@ -1,7 +1,7 @@
 import { ItemsState } from "../../redux/item/reducers";
 import React from "react";
 import { AppState } from "../../redux";
-import { actionFetchItems } from "../../redux/item/actions";
+import { actionFetchItems, actionRemoveFromFavorites } from "../../redux/item/actions";
 import { Item } from "../../models/item";
 import { actionPlay } from "../../redux/player/actions";
 import { connect } from "react-redux";
@@ -16,7 +16,8 @@ interface ListContainerStateProps {
 
 interface ListContainerProps extends ListContainerStateProps {
     loadData: () => {},
-    play: (item: Item) => {}
+    play: (item: Item) => {},
+    remove: (item: Item) => {}
 }
 
 class ListContainer extends React.Component<ListContainerProps, ItemsState> {
@@ -26,6 +27,7 @@ class ListContainer extends React.Component<ListContainerProps, ItemsState> {
         super(props, state);
 
         this.isPlaying = this.isPlaying.bind(this);
+        this.onDelete = this.onDelete.bind(this);
     }
 
     componentDidMount() {
@@ -34,6 +36,10 @@ class ListContainer extends React.Component<ListContainerProps, ItemsState> {
 
     onClick = (item: Item) => {
         this.props.play(item);
+    }
+
+    onDelete = (item: Item) => {
+        this.props.remove(item);
     }
 
     isPlaying(url: string): boolean | undefined {
@@ -51,6 +57,7 @@ class ListContainer extends React.Component<ListContainerProps, ItemsState> {
                     items={this.props.searchState.items}
                     isPlaying={this.isPlaying}
                     onClick={this.onClick}
+                    onDelete={this.onDelete}
                 />
             )
         } else {
@@ -60,6 +67,7 @@ class ListContainer extends React.Component<ListContainerProps, ItemsState> {
                     items={this.props.itemsState.items}
                     isPlaying={this.isPlaying}
                     onClick={this.onClick}
+                    onDelete={this.onDelete}
                 />
             )
         }
@@ -77,7 +85,8 @@ const mapStateToProps = (state: AppState) => {
 const mapDispatchToProps = (dispatch: any) => {
     return {
         loadData: () => dispatch(actionFetchItems()),
-        play: (item: Item) => dispatch(actionPlay(item))
+        play: (item: Item) => dispatch(actionPlay(item)),
+        remove: (item: Item) => dispatch(actionRemoveFromFavorites(item))
     };
 }
 

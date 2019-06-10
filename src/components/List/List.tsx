@@ -9,6 +9,7 @@ interface ListProps {
     items: Item[];
     isPlaying: any;
     onClick: any;
+    onDelete: any;
 }
 
 const List = (props: ListProps) => {
@@ -18,7 +19,7 @@ const List = (props: ListProps) => {
         case LoadingState.LOADED:
             return <ul className={styles.itemList}>
                 {props.items.map((item: Item, i: number) => (
-                    <ListItem item={item} key={i} index={i} selected={props.isPlaying(item.url)} onClick={props.onClick} />
+                    <ListItem item={item} key={i} index={i} selected={props.isPlaying(item.url)} onClick={props.onClick} onDelete={props.onDelete} />
                 ))}
             </ul>
         default:

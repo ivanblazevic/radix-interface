@@ -1,6 +1,7 @@
 import { Dispatch } from "redux";
 import ItemsService from "../../services/items";
-import { ACTION_ITEMS_FETCH_SUCCESS, ACTION_ITEMS_FETCH_ERROR, ACTION_ITEMS_FETCH } from "./types";
+import { ACTION_ITEMS_FETCH_SUCCESS, ACTION_ITEMS_FETCH_ERROR, ACTION_ITEMS_FETCH, ACTION_ITEMS_DELETE_SUCCESS } from "./types";
+import { Item } from "../../models/item";
 
 function dispatchFetchItems(): any {
   return {
@@ -22,6 +23,13 @@ function dispatchFetchItemsError(e: Error): any {
   };
 }
 
+function dispatchDeleteItemsSuccess(item: Item): any {
+  return {
+    type: ACTION_ITEMS_DELETE_SUCCESS,
+    item
+  };
+}
+
 export function actionFetchItems() {
   return (dispatch: Dispatch) => {
     dispatch(dispatchFetchItems());
@@ -32,5 +40,22 @@ export function actionFetchItems() {
     .catch((e: Error) => {
       return dispatch(dispatchFetchItemsError(e));
     });
+  };
+}
+
+export function actionRemoveFromFavorites(item: Item) {
+  return (dispatch: any) => {
+    dispatch(dispatchDeleteItemsSuccess(item))
+    /*
+    return ItemsService.removeFavorites(item._id).then(res => {
+      console.log(res);
+      //return dispatch(actionFetchPlayerInfo());
+      return null;
+    })
+    .catch((e: string) => {
+      return null;
+      //return dispatch(dispatchFetchPlayerInfoError(e.toString()));
+    });
+    */
   };
 }
