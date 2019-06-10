@@ -24,6 +24,8 @@ class ListContainer extends React.Component<ListContainerProps, ItemsState> {
     // eslint-disable-next-line @typescript-eslint/no-useless-constructor
     constructor(props: ListContainerProps, state: ItemsState) {
         super(props, state);
+
+        this.isPlaying = this.isPlaying.bind(this);
     }
 
     componentDidMount() {

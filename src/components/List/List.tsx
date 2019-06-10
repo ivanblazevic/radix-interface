@@ -3,7 +3,6 @@ import { Item } from '../../models/item';
 import { LoadingState } from '../../redux';
 import ListItem from "./ListItem";
 import styles from './List.module.css';
-import './Bars.css';
 
 interface ListProps {
     state: LoadingState;

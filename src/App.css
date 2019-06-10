@@ -75,3 +75,23 @@ header, footer {
   transition: all 0.3s ease-in-out;
   transform: translateY(100%);
 }
+
+
+.swiped {
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-20%);
+}
+
+.delete {
+  background: red;
+  color: white;
+  margin: -21px -103px -19px;
+  float: right;
+  padding: 17px 15px;
+  box-sizing: border-box;
+  clear: right;
+}
+
+.item-container {
+  position: relative;
+}

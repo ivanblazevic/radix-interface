@@ -36,7 +36,7 @@ class Header extends React.Component<any, any>  {
                         <span>STATIONS</span>
                         <input type="text" className="form-control form-control-lg" placeholder="Search..." onChange={this.onSearch}/>
                     </div>
-                    <i onClick={this.activateSearch} className={ "fas fa-" + (this.state.isSearching ? 'times' : 'search') }></i>
+                    {/* <i onClick={this.activateSearch} className={ "fas fa-" + (this.state.isSearching ? 'times' : 'search') }></i> */}
                 </div>
             </header>
         );
