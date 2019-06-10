@@ -46,7 +46,6 @@ export function actionFetchItems() {
 export function actionRemoveFromFavorites(item: Item) {
   return (dispatch: any) => {
     dispatch(dispatchDeleteItemsSuccess(item))
-    /*
     return ItemsService.removeFavorites(item._id).then(res => {
       console.log(res);
       //return dispatch(actionFetchPlayerInfo());
@@ -56,6 +55,5 @@ export function actionRemoveFromFavorites(item: Item) {
       return null;
       //return dispatch(dispatchFetchPlayerInfoError(e.toString()));
     });
-    */
   };
 }
