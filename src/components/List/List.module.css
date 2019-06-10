@@ -1,4 +1,4 @@
-#items-loading {
+.itemsLoading {
     margin-left: -25px;
     margin-top: -25px;
     left: 50%;
@@ -8,7 +8,7 @@
     color: var(--textColor);
 }
 
-ul {
+.itemList {
     padding: 0;
     margin: 0;
     list-style: none;
@@ -22,7 +22,7 @@ ul {
     overflow: auto;
 }
   
-li {
+.itemList li {
     padding: 12px;
     border-bottom: 1px solid var(--listDivider);
     margin: 8px;

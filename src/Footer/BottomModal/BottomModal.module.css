@@ -1,0 +1,17 @@
+.bottomModal {
+    color: var(--textColor);
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
+.bottomModal li + li {
+    border-top: 1px solid rgba(244, 59, 71, 0.4);
+}
+
+.bottomModal li {
+    padding: 16px 0px;
+}
+
+.bottomModal li i {
+    width: 20px;
+}

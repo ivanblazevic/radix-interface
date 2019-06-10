@@ -56,3 +56,22 @@ header, footer {
 .menu a + a {
   margin-top: 12px;
 }
+
+.ReactModal__Content {
+  border-radius: 16px !important;
+}
+
+
+.ReactModal__Overlay {
+  transform: translateY(100%);
+  transition: all 0.3s ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  transform: translateY(16%);
+}
+
+.ReactModal__Overlay--before-close {
+  transition: all 0.3s ease-in-out;
+  transform: translateY(100%);
+}

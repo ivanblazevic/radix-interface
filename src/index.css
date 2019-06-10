@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 :root {
-  --textColor: #f43b47;
+  --textColor: rgb(244,59,71);
   --textDefaultColor: rgba(0, 0, 0, 0.8);
   --listDivider: rgba(0, 0, 0, 0.3);
-  --headerTextColor: #9D2053;
+  --headerTextColor: rgb(157,32,83);
   --headerBackground: rgba(52, 25, 49, 0.7);
   --backgroundGradient: linear-gradient(to top, #f43b47 0%, #453a94 100%);
 }
@@ -45,6 +45,7 @@ input {
   font-size: 25px;
   margin: -4px 0;
   color: var(--textColor);
+  box-sizing: border-box;
 }
 
 button {
@@ -53,6 +54,11 @@ button {
   border: 1px solid #f43a47;
   color: #f43a47;
   background: var(--headerTextColor);
+}
+
+button:disabled {
+  color: graytext;
+  opacity: 0.4;
 }
 
 code {

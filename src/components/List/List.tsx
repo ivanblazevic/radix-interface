@@ -2,7 +2,7 @@ import React from 'react';
 import { Item } from '../../models/item';
 import { LoadingState } from '../../redux';
 import ListItem from "./ListItem";
-import './List.css';
+import styles from './List.module.css';
 import './Bars.css';
 
 interface ListProps {
@@ -15,9 +15,9 @@ interface ListProps {
 const List = (props: ListProps) => {
     switch (props.state) {
         case LoadingState.LOADING:
-            return <div id="items-loading"><i className="fas fa-spinner"></i></div>
+            return <div className={styles.itemsLoading}><i className="fas fa-spinner"></i></div>
         case LoadingState.LOADED:
-            return <ul>
+            return <ul className={styles.itemList}>
                 {props.items.map((item: Item, i: number) => (
                     <ListItem item={item} key={i} index={i} selected={props.isPlaying(item.url)} onClick={props.onClick} />
                 ))}
