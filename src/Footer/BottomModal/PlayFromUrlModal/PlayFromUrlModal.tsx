@@ -4,24 +4,7 @@ import { Item } from '../../../models/item';
 import { connect } from 'react-redux';
 import { actionPlay } from '../../../redux/player/actions';
 import { AppState } from '../../../redux';
-
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        width: '80%',
-        height: '40%',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-        background: 'rgba(0,0,0,0.7)',
-        border: 'none'
-    },
-    overlay: {
-        background: 'rgba(0,0,0,0.0)'
-    }
-};
+import { modalStyles } from '../../../components/shared/ModalStyles';
 
 interface PlayFromUrlModalProps {
     isOpen: boolean;
@@ -66,7 +49,7 @@ class PlayFromUrlModal extends React.Component<PlayFromUrlModalProps> {
             <Modal
                 isOpen={this.props.isOpen}
                 onRequestClose={this.props.closeMenu}
-                style={customStyles}>
+                style={modalStyles}>
                 <div>
                     <input className="full-width" placeholder="Title" type="text" onChange={this.onTitleChange} value={this.state.title} />
                 </div>

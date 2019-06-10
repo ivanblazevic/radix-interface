@@ -18,6 +18,10 @@ class Menu extends React.Component<any>  {
         this.props.addToFavorites();
     }
 
+    removeFromFavorites = () => {
+        this.props.removeFromFavorites();
+    }    
+
     openMenu = () => {
         this.setState({ menuIsOpen: true });
     }
@@ -30,7 +34,11 @@ class Menu extends React.Component<any>  {
         return (
             <div className="right">
                 <i onClick={this.openMenu} className="fas fa-ellipsis-v"></i>
-                <BottomModal isOpen={this.state.menuIsOpen} closeMenu={this.closeMenu} addToFavorites={this.addToFavorites} />
+                <BottomModal 
+                    isOpen={this.state.menuIsOpen}
+                    closeMenu={this.closeMenu}
+                    addToFavorites={this.addToFavorites}
+                    removeFromFavorites={this.removeFromFavorites} />
             </div>
         );
     }

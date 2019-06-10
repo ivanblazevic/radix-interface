@@ -2,29 +2,13 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import PlayFromUrlModal from './PlayFromUrlModal/PlayFromUrlModal';
 import styles from './BottomModal.module.css';
-
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        width: '80%',
-        height: '40%',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-        background: 'rgba(0,0,0,0.7)',
-        border: 'none'
-    },
-    overlay: {
-        background: 'rgba(0,0,0,0.0)'
-    }
-};
+import { modalStyles } from '../../components/shared/ModalStyles';
 
 interface BottomModalProps {
     isOpen: boolean;
     closeMenu: any;
     addToFavorites: any;
+    removeFromFavorites: any;
 }
 
 const BottomModal = (props: BottomModalProps) => {
@@ -35,13 +19,16 @@ const BottomModal = (props: BottomModalProps) => {
                 isOpen={props.isOpen}
                 closeTimeoutMS={300}
                 onRequestClose={props.closeMenu}
-                style={customStyles}>
+                style={modalStyles}>
                 <ul className={styles.bottomModal}>
                     <li onClick={() => {setIsPlayOpen(true);props.closeMenu()}}>
                         <span><i className="fas fa-plus"></i></span> Play From Url
                     </li>
                     <li onClick={props.addToFavorites}>
                         <span><i className="fas fa-star"></i></span> Add To Favorites
+                    </li>
+                    <li onClick={props.removeFromFavorites}>
+                        <span><i className="fas fa-trash-alt"></i></span> Remove To Favorites
                     </li>
                 </ul>
             </Modal>

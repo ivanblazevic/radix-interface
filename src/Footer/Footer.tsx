@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { AppState, LoadingState } from "../redux";
-import { actionFetchPlayerInfo, actionPlay, actionAddToFavorites } from "../redux/player/actions";
+import { actionFetchPlayerInfo, actionPlay, actionAddToFavorites, actionRemoveFromFavorites } from "../redux/player/actions";
 import { PlayerState } from "../redux/player/reducers";
 import Menu from './Menu';
 import { Item } from "../models/item";
@@ -31,6 +31,10 @@ class Footer extends React.Component<any, PlayerState> {
         this.props.addToFavorites();
     }
 
+    removeFromFavorites() {
+        this.props.removeFromFavorites();
+    }
+
     render() {
         return (
             <footer>
@@ -49,7 +53,7 @@ class Footer extends React.Component<any, PlayerState> {
                             return null;
                         }
                 })()}
-                <Menu play={this.play} addToFavorites={this.addToFavorites}></Menu>
+                <Menu play={this.play} addToFavorites={this.addToFavorites} removeFromFavorites={this.removeFromFavorites}></Menu>
             </footer>
         );
     }
@@ -61,7 +65,8 @@ const mapDispatchToProps = (dispatch: any) => {
     return {
       loadData: () => dispatch(actionFetchPlayerInfo()),
       play: (item: Item) => dispatch(actionPlay(item)),
-      addToFavorites: () => dispatch(actionAddToFavorites())
+      addToFavorites: () => dispatch(actionAddToFavorites()),
+      removeFromFavorites: () => dispatch(actionRemoveFromFavorites())
     };
 }
 
