@@ -1,10 +1,10 @@
 import React from 'react';
 import Modal from 'react-modal';
-import { Item } from '../../../models/item';
+import { Item } from '../../../../models/item';
 import { connect } from 'react-redux';
-import { actionPlay } from '../../../redux/player/actions';
-import { AppState } from '../../../redux';
-import { modalStyles } from '../../../components/shared/ModalStyles';
+import { actionPlay } from '../../../../redux/player/actions';
+import { AppState } from '../../../../redux';
+import { modalStyles } from '../../../shared/ModalStyles';
 
 interface PlayFromUrlModalProps {
     isOpen: boolean;

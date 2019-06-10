@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import PlayFromUrlModal from './PlayFromUrlModal/PlayFromUrlModal';
 import styles from './BottomModal.module.css';
-import { modalStyles } from '../../components/shared/ModalStyles';
+import { modalStyles } from '../../shared/ModalStyles';
 
 interface BottomModalProps {
     isOpen: boolean;

@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { AppState, LoadingState } from "../redux";
-import { actionFetchPlayerInfo, actionPlay, actionAddToFavorites, actionRemoveFromFavorites } from "../redux/player/actions";
-import { PlayerState } from "../redux/player/reducers";
+import { AppState, LoadingState } from "../../redux";
+import { actionFetchPlayerInfo, actionPlay, actionAddToFavorites, actionRemoveFromFavorites } from "../../redux/player/actions";
+import { PlayerState } from "../../redux/player/reducers";
 import Menu from './Menu';
-import { Item } from "../models/item";
+import { Item } from "../../models/item";
 import './Footer.css';
 
 class Footer extends React.Component<any, PlayerState> {

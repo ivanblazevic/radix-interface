@@ -1,8 +1,8 @@
 import React from "react";
-import { AppState } from "../redux";
-import { actionSearch, actionActivateSearch } from "../redux/search/actions";
+import { AppState } from "../../redux";
+import { actionSearch, actionActivateSearch } from "../../redux/search/actions";
 import { connect } from "react-redux";
-import { SearchState } from "../redux/search/reducers";
+import { SearchState } from "../../redux/search/reducers";
 import './Header.css';
 
 class Header extends React.Component<any, any>  {

@@ -4,11 +4,11 @@ import store from './redux/index'
 import './App.css';
 import './Utils.css';
 import './BurgerMenu.css';
-import Header from './Header/Header';
-import Footer from './Footer/Footer';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import ListContainer from './components/List/ListContainer';
 import SideBar from './SideBar';
-import Settings from './Settings/Settings';
+import Settings from './components/Settings/Settings';
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
