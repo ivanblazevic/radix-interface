@@ -4,6 +4,17 @@ footer {
     font-size: 20px;
     font-weight: bold;
     padding: 16px;
+    height: 60px;
+    box-sizing: border-box;
+    transition: height 0.4s;
+}
+
+footer.expanded {
+    height: 200px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    overflow: hidden;
+    animation: borderRadius 0.5s;
 }
 
 footer span {
@@ -13,3 +24,14 @@ footer span {
     width: 92%;
     display: inline-block;
 }
+
+@keyframes borderRadius {
+    0% {
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+    100% {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+  }

@@ -1,20 +1,27 @@
 import React from "react";
 import { connect } from "react-redux";
-import { AppState, LoadingState } from "../../redux";
-import { actionFetchPlayerInfo, actionPlay, actionAddToFavorites } from "../../redux/player/actions";
-import { PlayerState } from "../../redux/player/reducers";
-import Menu from './Menu';
 import { Item } from "../../models/item";
+import { AppState, LoadingState } from "../../redux";
+import { actionAddToFavorites, actionFetchPlayerInfo, actionPlay } from "../../redux/player/actions";
 import './Footer.css';
+import FooterOverlay from "./FooterOverlay";
+import FooterText from "./FooterText";
+import Menu from "./Menu";
 
-class Footer extends React.Component<any, PlayerState> {
+class Footer extends React.Component<any> {
 
+    state = {
+        isExpanded: false
+    }
+    
     // eslint-disable-next-line @typescript-eslint/no-useless-constructor
-    constructor(props: any, state: PlayerState) {
-        super(props, state);
+    constructor(props: any) {
+        super(props);
 
         this.play = this.play.bind(this);
         this.addToFavorites = this.addToFavorites.bind(this);
+        this.expand = this.expand.bind(this);
+        this.collapse = this.collapse.bind(this);
     }
 
     componentDidMount() {
@@ -31,26 +38,23 @@ class Footer extends React.Component<any, PlayerState> {
         this.props.addToFavorites();
     }
 
+    expand(): void {
+        this.setState({ isExpanded: true });
+    }
+
+    collapse() {
+        this.setState({ isExpanded: false });
+    }
+
     render() {
         return (
-            <footer>
+            <FooterOverlay expand={this.expand} collapse={this.collapse} isExpanded={this.state.isExpanded}>
                 <div className="header-background-container">
                     <div className="header-background"></div>
                 </div>
-                {(() => {
-                    switch(this.props.state) {
-                        case LoadingState.LOADING:
-                            return <span><i className="fas fa-spinner"></i>Getting Info</span>;
-                        case LoadingState.LOADED:
-                            return <span><i className="fas fa-music"></i>{this.props.info.title}</span>;
-                        case LoadingState.ERROR:
-                            return <span><i className="fas fa-unlink"></i>{this.props.errorMessage}</span>;
-                        default:
-                            return null;
-                        }
-                })()}
+                <FooterText state={this.props.state} text={this.props.info.title} error={this.props.errorMessage}></FooterText>
                 <Menu play={this.play} addToFavorites={this.addToFavorites}></Menu>
-            </footer>
+            </FooterOverlay>
         );
     }
 }
