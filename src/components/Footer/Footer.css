@@ -10,11 +10,19 @@ footer {
 }
 
 footer.expanded {
-    height: 200px;
+    height: 300px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     overflow: hidden;
     animation: borderRadius 0.5s;
+}
+
+.footer-menu {
+    opacity: 0;
+}
+
+footer.expanded .footer-menu {
+    opacity: 1;
 }
 
 footer span {

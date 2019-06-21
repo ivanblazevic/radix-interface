@@ -5,7 +5,7 @@ const FooterOverlay = (props: any) => {
     const handlers = useSwipeable({ onSwipedDown: (eventData) => { props.collapse() }, preventDefaultTouchmoveEvent: true,
         trackMouse: true })
     return (
-        <footer {...handlers} onClick={props.expand} className={ props.isExpanded ? 'expanded' : '' }>{props.children}</footer>
+        <footer {...handlers} onClick={() => { !props.isExpanded && props.expand(); }} className={ props.isExpanded ? 'expanded' : '' }>{props.children}</footer>
     )
 }
 

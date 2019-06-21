@@ -11,7 +11,8 @@ import Menu from "./Menu";
 class Footer extends React.Component<any> {
 
     state = {
-        isExpanded: false
+        isExpanded: false,
+        skipExpand: false
     }
     
     // eslint-disable-next-line @typescript-eslint/no-useless-constructor
@@ -39,10 +40,17 @@ class Footer extends React.Component<any> {
     }
 
     expand(): void {
+        if (!!this.state.skipExpand) {
+            return;
+        }
         this.setState({ isExpanded: true });
+        this.setState({ skipExpand: true });
     }
 
     collapse() {
+        setTimeout(() => {
+            this.setState({ skipExpand: false })
+        }, 200);
         this.setState({ isExpanded: false });
     }
 

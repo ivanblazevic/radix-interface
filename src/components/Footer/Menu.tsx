@@ -32,7 +32,7 @@ class Menu extends React.Component<any>  {
 
     render() {
         return (
-            <div className="right">
+            <div className="right footer-menu">
                 <i onClick={this.openMenu} className="fas fa-ellipsis-v"></i>
                 <BottomModal 
                     isOpen={this.state.menuIsOpen}
