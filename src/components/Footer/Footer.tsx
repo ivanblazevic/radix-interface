@@ -1,8 +1,11 @@
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
 import React from "react";
 import { connect } from "react-redux";
 import { Item } from "../../models/item";
 import { AppState, LoadingState } from "../../redux";
 import { actionAddToFavorites, actionFetchPlayerInfo, actionPlay } from "../../redux/player/actions";
+import PlayerService from '../../services/player';
 import './Footer.css';
 import FooterOverlay from "./FooterOverlay";
 import FooterText from "./FooterText";
@@ -54,6 +57,11 @@ class Footer extends React.Component<any> {
         this.setState({ isExpanded: false });
     }
 
+    onAfterChange(e: number): void {
+        console.log("onAfterChange", e)
+        PlayerService.volume(e);
+    }
+
     render() {
         return (
             <FooterOverlay expand={this.expand} collapse={this.collapse} isExpanded={this.state.isExpanded}>
@@ -62,6 +70,10 @@ class Footer extends React.Component<any> {
                 </div>
                 <FooterText state={this.props.state} text={this.props.info.title} error={this.props.errorMessage}></FooterText>
                 <Menu play={this.play} addToFavorites={this.addToFavorites}></Menu>
+
+                {!(this.props.info.volume === undefined) && this.state.isExpanded &&
+                    <Slider onAfterChange={this.onAfterChange} defaultValue={this.props.info.volume} /> 
+                }
             </FooterOverlay>
         );
     }

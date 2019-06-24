@@ -33,6 +33,22 @@ footer span {
     display: inline-block;
 }
 
+.rc-slider {
+    margin-top: 200px;
+}
+
+.rc-slider-rail {
+    background-color: var(--textColor);
+}
+
+.rc-slider-handle {
+    border: solid 2px var(--textColor);
+    background-color: var(--headerTextColor);
+    margin-top: -8px;
+    width: 20px;
+    height: 20px;
+}
+
 @keyframes borderRadius {
     0% {
         border-top-left-radius: 0px;
