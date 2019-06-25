@@ -26,6 +26,7 @@ label {
   color: var(--textColor);
   margin-right: 12px;
   font-size: 25px;
+  line-height: 46px;
 }
 
 html {

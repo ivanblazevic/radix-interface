@@ -7,6 +7,7 @@ footer {
     height: 60px;
     box-sizing: border-box;
     transition: height 0.4s;
+    -webkit-transition: height 0.4s;
 }
 
 footer.expanded {
@@ -49,6 +50,14 @@ footer span {
     height: 20px;
 }
 
+.footer-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
 @keyframes borderRadius {
     0% {
         border-top-left-radius: 0px;
@@ -58,4 +67,4 @@ footer span {
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
     }
-  }
+}

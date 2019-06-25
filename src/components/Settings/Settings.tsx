@@ -1,20 +1,30 @@
 import React from "react";
 import { connect } from "react-redux";
-import { SearchState } from "../../redux/search/reducers";
 import { AppState } from "../../redux";
-import { actionSearch, actionActivateSearch } from "../../redux/search/actions";
+import { actionActivateSearch, actionSearch } from "../../redux/search/actions";
 import PlayerService from "../../services/player";
 import styles from './settings.module.css';
 
 class Settings extends React.Component<any, any>  {
-    // eslint-disable-next-line @typescript-eslint/no-useless-constructor
-    constructor(props: any, state: SearchState) {
-        super(props, state);
 
-        this.state = {
+    state = {
+        updateInProgress: false,
+        ip: '',
+        oldIp: ''
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-useless-constructor
+    constructor(props: any) {
+        super(props);
+
+        this.update = this.update.bind(this);
+    }
+
+    componentDidMount() {
+        this.setState({
             ip: localStorage.getItem("ip") || "",
             oldIp: localStorage.getItem("ip") || ""
-        }
+        })
     }
 
     onIPChange = (event: any) => {
@@ -29,6 +39,7 @@ class Settings extends React.Component<any, any>  {
     }
 
     update() {
+        this.setState({ updateInProgress: true });
         PlayerService.update();
     }
 
@@ -52,7 +63,8 @@ class Settings extends React.Component<any, any>  {
                 <br/>
 
                 <label htmlFor="ip">IP Address:</label>
-                <input id="ip" placeholder="http://radix.local" type="text" value={this.state.ip} onChange={this.onIPChange}/>
+                <br/>
+                <input id="ip" className={styles.ip} placeholder="http://radix.local" type="text" value={this.state.ip} onChange={this.onIPChange}/>
 
                 { this.ipHasChanged() && 
                     <span>Restart for changes to take effect</span>
@@ -62,10 +74,13 @@ class Settings extends React.Component<any, any>  {
                 <br/>
                 
                 <div>
-                    <button onClick={this.update}>Update</button>
+                    { !this.state.updateInProgress && <button onClick={this.update}>Update</button>}
+                    { this.state.updateInProgress && <span>Update in progress...</span>}
                 </div>
 
-                <div className={styles.close} onClick={this.props.handleClose}>close</div>
+                <div className={styles.close} onClick={this.props.handleClose}>
+                    <i className="fas fa-times-circle"></i>
+                </div>
             </div>
         );
     }

@@ -13,6 +13,8 @@ import Menu from "./Menu";
 
 class Footer extends React.Component<any> {
 
+    firstRef: any;
+
     state = {
         isExpanded: false,
         skipExpand: false
@@ -26,12 +28,27 @@ class Footer extends React.Component<any> {
         this.addToFavorites = this.addToFavorites.bind(this);
         this.expand = this.expand.bind(this);
         this.collapse = this.collapse.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
+
+        this.firstRef = React.createRef();
     }
 
     componentDidMount() {
+        document.addEventListener('mousedown', this.handleClickOutside, false);
         if (this.props.state === LoadingState.INIT) {
             this.props.loadData();
         }
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleClickOutside, false);
+    }
+
+    handleClickOutside(e: any): void {
+        if (this.firstRef.current.contains(e.target)) {
+            return;
+        }
+        this.collapse();
     }
 
     play(item: Item) {
@@ -58,21 +75,20 @@ class Footer extends React.Component<any> {
     }
 
     onAfterChange(e: number): void {
-        console.log("onAfterChange", e)
         PlayerService.volume(e);
     }
 
     render() {
         return (
-            <FooterOverlay expand={this.expand} collapse={this.collapse} isExpanded={this.state.isExpanded}>
+            <FooterOverlay ref={this.firstRef} expand={this.expand} collapse={this.collapse} isExpanded={this.state.isExpanded}>
                 <div className="header-background-container">
                     <div className="header-background"></div>
                 </div>
                 <FooterText state={this.props.state} text={this.props.info.title} error={this.props.errorMessage}></FooterText>
-                <Menu play={this.play} addToFavorites={this.addToFavorites}></Menu>
+                <Menu onClick={this.collapse} play={this.play} addToFavorites={this.addToFavorites}></Menu>
 
                 {!(this.props.info.volume === undefined) && this.state.isExpanded &&
-                    <Slider onAfterChange={this.onAfterChange} defaultValue={this.props.info.volume} /> 
+                    <Slider onAfterChange={this.onAfterChange} defaultValue={this.props.info.volume} />
                 }
             </FooterOverlay>
         );

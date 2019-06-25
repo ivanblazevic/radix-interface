@@ -23,6 +23,7 @@ class Menu extends React.Component<any>  {
     }    
 
     openMenu = () => {
+        this.props.onClick();
         this.setState({ menuIsOpen: true });
     }
 

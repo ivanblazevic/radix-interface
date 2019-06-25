@@ -15,3 +15,7 @@
   right: 20px;
   color: var(--textColor);
 }
+
+.ip {
+  width: 100%;
+}
