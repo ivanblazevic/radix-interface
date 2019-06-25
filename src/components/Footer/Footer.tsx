@@ -6,6 +6,7 @@ import { Item } from "../../models/item";
 import { AppState, LoadingState } from "../../redux";
 import { actionAddToFavorites, actionFetchPlayerInfo, actionPlay } from "../../redux/player/actions";
 import PlayerService from '../../services/player';
+import BottomModal from './BottomModal/BottomModal';
 import './Footer.css';
 import FooterOverlay from "./FooterOverlay";
 import FooterText from "./FooterText";
@@ -17,7 +18,8 @@ class Footer extends React.Component<any> {
 
     state = {
         isExpanded: false,
-        skipExpand: false
+        skipExpand: false,
+        menuIsOpen: false
     }
     
     // eslint-disable-next-line @typescript-eslint/no-useless-constructor
@@ -34,14 +36,12 @@ class Footer extends React.Component<any> {
     }
 
     componentDidMount() {
-        document.addEventListener('mousedown', this.handleClickOutside, false);
         if (this.props.state === LoadingState.INIT) {
             this.props.loadData();
         }
     }
 
     componentWillUnmount() {
-        document.removeEventListener('mousedown', this.handleClickOutside, false);
     }
 
     handleClickOutside(e: any): void {
@@ -59,10 +59,15 @@ class Footer extends React.Component<any> {
         this.props.addToFavorites();
     }
 
+    removeFromFavorites = () => {
+        console.log("remove")
+    }
+
     expand(): void {
         if (!!this.state.skipExpand) {
             return;
         }
+        document.addEventListener('mousedown', this.handleClickOutside, false);
         this.setState({ isExpanded: true });
         this.setState({ skipExpand: true });
     }
@@ -72,25 +77,42 @@ class Footer extends React.Component<any> {
             this.setState({ skipExpand: false })
         }, 200);
         this.setState({ isExpanded: false });
+        document.removeEventListener('mousedown', this.handleClickOutside, false);
     }
 
     onAfterChange(e: number): void {
         PlayerService.volume(e);
     }
 
+    openMenu = () => {
+        this.collapse();
+        this.setState({ menuIsOpen: true });
+    }
+
+    closeMenu = () => {
+        this.setState({ menuIsOpen: false });
+    }
+
     render() {
         return (
-            <FooterOverlay ref={this.firstRef} expand={this.expand} collapse={this.collapse} isExpanded={this.state.isExpanded}>
-                <div className="header-background-container">
-                    <div className="header-background"></div>
-                </div>
-                <FooterText state={this.props.state} text={this.props.info.title} error={this.props.errorMessage}></FooterText>
-                <Menu onClick={this.collapse} play={this.play} addToFavorites={this.addToFavorites}></Menu>
+            <div>
+                <FooterOverlay ref={this.firstRef} expand={this.expand} collapse={this.collapse} isExpanded={this.state.isExpanded}>
+                    <div className="header-background-container">
+                        <div className="header-background"></div>
+                    </div>
+                    <FooterText state={this.props.state} text={this.props.info.title} error={this.props.errorMessage}></FooterText>
+                    <Menu openMenu={this.openMenu} play={this.play} addToFavorites={this.addToFavorites}></Menu>
 
-                {!(this.props.info.volume === undefined) && this.state.isExpanded &&
-                    <Slider onAfterChange={this.onAfterChange} defaultValue={this.props.info.volume} />
-                }
-            </FooterOverlay>
+                    {!(this.props.info.volume === undefined) && this.state.isExpanded &&
+                        <Slider onAfterChange={this.onAfterChange} defaultValue={this.props.info.volume} />
+                    }
+                </FooterOverlay>
+                <BottomModal 
+                    isOpen={this.state.menuIsOpen}
+                    closeMenu={this.closeMenu}
+                    addToFavorites={this.addToFavorites}
+                    removeFromFavorites={this.removeFromFavorites} />
+            </div>
         );
     }
 }

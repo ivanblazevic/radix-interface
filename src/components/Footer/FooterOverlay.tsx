@@ -6,7 +6,7 @@ const FooterOverlay = React.forwardRef((props: any, ref: any) => {
         trackMouse: true })
     return (
         <div className={ props.isExpanded ? 'footer-overlay' : '' }>
-            <footer {...handlers} ref={ref} onClick={() => { !props.isExpanded && props.expand(); }} className={ props.isExpanded ? 'expanded' : '' }>{props.children}</footer>
+            <footer {...handlers} ref={ref} onClick={() => !props.isExpanded && props.expand(ref)} className={ props.isExpanded ? 'expanded' : '' }>{props.children}</footer>
         </div>
     )
 })
