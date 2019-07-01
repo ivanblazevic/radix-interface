@@ -33,10 +33,13 @@ class ListItem extends React.Component<any> {
     }
 
     onPlay() {
-        if (this.state.swiped) {
-            return;
-        }
-        this.props.onClick(this.props.item);
+        setTimeout(() => {
+            if (this.state.swiped) {
+                return;
+            }
+            this.props.onClick(this.props.item);
+            console.log("play");
+        }, 100)
     }
 
     onDelete() {
